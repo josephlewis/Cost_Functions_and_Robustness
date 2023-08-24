@@ -529,11 +529,9 @@ for (i in 1:length(cfs)) {
   
   slope_scenario_1 <- seq(-0.5, 0.5, 0.01)
   vals_scenario_1 <- 1/cf(slope_scenario_1)
-  vals_scenario_1 <- (vals_scenario_1 - min(vals_scenario_1)) / (max(vals_scenario_1) - min(vals_scenario_1))
   
   slope_scenario_2 <- seq(-1, 1, 0.01)
   vals_scenario_2 <- 1/cf(slope_scenario_2)
-  vals_scenario_2 <- (vals_scenario_2 - min(vals_scenario_2)) / (max(vals_scenario_2) - min(vals_scenario_2))
   
   
   cf_df[[i]] <- rbind(
@@ -554,7 +552,7 @@ methods_plot3a <- ggplot(cf_df) +
   geom_line(aes(x = slope, y = cf_vals, group = scenario, colour = type, lty = scenario)) +
   facet_wrap(~cf, nrow = 5, scales = "free") + 
   scale_colour_manual(values = c("#003f5c", "#bc5090")) + 
-  labs(x = "Degrees Slope", y = "Normalised cost", colour = "Hypothesis type") + 
+  labs(x = "Degrees Slope", y = "Cost", colour = "Hypothesis type") + 
   scale_x_continuous(breaks = seq(-50, 50, 10)) + 
   theme_classic() + 
   theme(legend.position = "bottom", strip.text.x = element_text(size = 8))
